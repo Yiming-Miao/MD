@@ -4,6 +4,8 @@ import java.awt.event.*;
 import java.io.File;
 
 public class GUI extends Component implements ActionListener {
+    JFrame guiFrame;
+    JFrame secondFrame;
     JLabel title;
     JLabel add_label;
     JButton add_button;
@@ -11,17 +13,34 @@ public class GUI extends Component implements ActionListener {
     JLabel search_label;
     JButton search_button;
     JTextField search_field;
+    JButton con;
+    JLabel label;
+    JTextArea data;
 
     public static void main(String[] args) {
         new GUI();
     }
     public GUI()
     {
-        JFrame guiFrame = new JFrame();
+        guiFrame = new JFrame();
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.setTitle("Molecule Database");
         guiFrame.setSize(400,150);
         guiFrame.setLocationRelativeTo(null);
+
+        secondFrame = new JFrame();
+        secondFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        secondFrame.setTitle("Database");
+        secondFrame.setSize(400,400);
+        secondFrame.setLocationRelativeTo(null);
+        // secondFrame.setVisible(false);
+
+        label = new JLabel("Database:");
+        data = new JTextArea(400,400);
+        data.setBounds(0, 20, 800, 800);
+        secondFrame.add(label, BorderLayout.NORTH);
+        secondFrame.add(data, BorderLayout.CENTER);
+        secondFrame.setVisible(false);
 
         final JPanel titlePanel = new JPanel();
         title = new JLabel("Welcome to Molecule Database!");
@@ -47,14 +66,15 @@ public class GUI extends Component implements ActionListener {
         search_button = new JButton("Browse..");
         addPanel.add(search_button);
 
-        //JButton vegFruitBut = new JButton( "Fruit or Veg");
+        con = new JButton( "Confirm");
 
         add_button.addActionListener(this);
         search_button.addActionListener(this);
+        con.addActionListener(this);
 
         guiFrame.add(titlePanel, BorderLayout.NORTH);
         guiFrame.add(addPanel, BorderLayout.CENTER);
-
+        guiFrame.add(con, BorderLayout.SOUTH);
         guiFrame.setVisible(true);
     }
 
@@ -77,6 +97,10 @@ public class GUI extends Component implements ActionListener {
                 // String filepath = f.getPath();
                 search_button.setText(f.getName());
             }
+        }
+        else if (e.getSource() == con) {
+            //JOptionPane.showMessageDialog(null,"Success","Confirmation", JOptionPane.INFORMATION_MESSAGE);
+            secondFrame.setVisible(true);
         }
     }
 }
