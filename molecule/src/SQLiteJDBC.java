@@ -4,7 +4,7 @@ public class SQLiteJDBC {
     Connection c = null;
     Statement stmt = null;
 
-    public void connect() {
+    public void connect() { //Connect the database
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:molecule.db");
@@ -15,7 +15,7 @@ public class SQLiteJDBC {
         // System.out.println("Opened database successfully");
     }
 
-    public void createTable() throws SQLException {
+    public void createTable() throws SQLException { //Create four tables
         stmt = c.createStatement();
         String sql0 = "CREATE TABLE periodicTable" +
                 "(EID           INT         PRIMARY KEY     NOT NULL," +
@@ -43,6 +43,7 @@ public class SQLiteJDBC {
         c.close();
     }
 
+    //Four insert functions
     public void insertPT(int eid, String ename) throws SQLException {
         stmt = c.createStatement();
         String sql = "INSERT INTO periodicTable (EID, ENAME) " +
@@ -53,12 +54,12 @@ public class SQLiteJDBC {
     public int insertCompound(String cname, int enumber) throws SQLException {
         stmt = c.createStatement();
         String sql = "INSERT INTO compound (CID, CNAME, ENUMBER) " +
-                "VALUES (NULL,'" + cname + "', " + enumber + ");";
+                "VALUES (NULL,'" + cname.replace("'", "''") + "', " + enumber + ");";
         System.out.println(sql);
         stmt.executeUpdate(sql);
         int cid = 0;
-        ResultSet rs = stmt.executeQuery( "SELECT * FROM compound WHERE CNAME='" + cname + "';" );
-        while ( rs.next() ) {
+        ResultSet rs = stmt.executeQuery("SELECT * FROM compound WHERE CNAME='" + cname.replace("'", "''") + "';");
+        while (rs.next()) {
             cid = rs.getInt("CID");
             break;
         }
@@ -68,8 +69,8 @@ public class SQLiteJDBC {
     public void insertCE(int lid, String ename, int cid) throws SQLException {
         stmt = c.createStatement();
         int eid = 0;
-        ResultSet rs = stmt.executeQuery( "SELECT * FROM periodicTable WHERE ENAME='" + ename + "';" );
-        while ( rs.next() ) {
+        ResultSet rs = stmt.executeQuery("SELECT * FROM periodicTable WHERE ENAME='" + ename + "';");
+        while (rs.next()) {
             eid = rs.getInt("EID");
             break;
         }
