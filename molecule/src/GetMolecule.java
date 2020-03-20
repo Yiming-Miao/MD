@@ -54,20 +54,20 @@ public class GetMolecule {
             JSONArray PC_Compounds = obj.getJSONArray("PC_Compounds");
             JSONObject obj2 = PC_Compounds.getJSONObject(0);
             JSONArray element = obj2.getJSONObject("atoms").optJSONArray("element");
-            JSONArray lid1 = obj2.getJSONObject("bonds").getJSONArray("lid1");
-            JSONArray lid2 = obj2.getJSONObject("bonds").getJSONArray("lid2");
+            JSONArray aid1 = obj2.getJSONObject("bonds").getJSONArray("aid1");
+            JSONArray aid2 = obj2.getJSONObject("bonds").getJSONArray("aid2");
             JSONArray order = obj2.getJSONObject("bonds").optJSONArray("order");
 
             String[] elements = new String[element.length()];
-            String[] lid1s = new String[lid1.length()];
-            String[] lid2s = new String[lid2.length()];
+            String[] aid1s = new String[aid1.length()];
+            String[] aid2s = new String[aid2.length()];
             String[] orders = new String[order.length()];
             for (int i = 0; i < element.length(); i++) {
                 elements[i] = element.get(i).toString();
             }
-            for (int i = 0; i < lid1.length(); i++) {
-                lid1s[i] = lid1.get(i).toString();
-                lid2s[i] = lid2.get(i).toString();
+            for (int i = 0; i < aid1.length(); i++) {
+                aid1s[i] = aid1.get(i).toString();
+                aid2s[i] = aid2.get(i).toString();
                 orders[i] = order.get(i).toString();
             }
 
@@ -81,17 +81,19 @@ public class GetMolecule {
                 write.newLine();
                 write.write(periodicTable.get(Integer.parseInt(s)));
             }
-            for (int i = 0; i < lid1s.length; i++) {
+            for (int i = 0; i < aid1s.length; i++) {
                 for (int j = 0; j < Integer.parseInt(orders[i]); j++) {
                     write.newLine();
-                    write.write((Integer.parseInt(lid1s[i]) - 1) + " " + (Integer.parseInt(lid2s[i]) - 1));
+                    write.write((Integer.parseInt(aid1s[i]) - 1) + " " + (Integer.parseInt(aid2s[i]) - 1));
                 }
             }
             write.close();
             System.out.println(CID + " Successful");
-            
-        } catch (IOException e) {
+
+        } catch (IOException e1) {
             System.out.println("File Name/IO Error");
+        } catch (JSONException e2) {
+            System.out.println("JSON Error");
         }
     }
 

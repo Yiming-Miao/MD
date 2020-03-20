@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e41e7456-5381-4105-8c19-4ee11b92f335" name="Default Changelist" comment="" />
+    <list default="true" id="e41e7456-5381-4105-8c19-4ee11b92f335" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/molecule/GetMolecule.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/molecule/GetMolecule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/molecule/META-INF/molecule.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/molecule/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/molecule/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/molecule/ReadFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/molecule/ReadFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/molecule/SQLiteJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/molecule/SQLiteJDBC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GetMolecule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GetMolecule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReadFile.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +41,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1ZGyoxIokdHRzRlONMHGT5cZnKg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -37,9 +54,10 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hw2p3" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/molecule" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -86,6 +104,7 @@
       <workItem from="1584501160028" duration="5492000" />
       <workItem from="1584582035091" duration="9023000" />
       <workItem from="1584645289614" duration="1350000" />
+      <workItem from="1584668474562" duration="1569000" />
     </task>
     <servers />
   </component>
@@ -105,26 +124,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="534" y="222" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1584502362080" />
-    <state x="549" y="170" key="FileChooserDialogImpl" timestamp="1584645443373">
+    <state x="549" y="170" key="FileChooserDialogImpl" timestamp="1584669681699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584645443373" />
-    <state width="1493" height="128" key="GridCell.Tab.0.bottom" timestamp="1584590837412">
+    <state x="549" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584669681699" />
+    <state width="1493" height="355" key="GridCell.Tab.0.bottom" timestamp="1584669081152">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="128" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584590837412" />
-    <state width="1493" height="128" key="GridCell.Tab.0.center" timestamp="1584590837412">
+    <state width="1493" height="355" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584669081152" />
+    <state width="1493" height="355" key="GridCell.Tab.0.center" timestamp="1584669081152">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="128" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584590837412" />
-    <state width="1493" height="128" key="GridCell.Tab.0.left" timestamp="1584590837412">
+    <state width="1493" height="355" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584669081152" />
+    <state width="1493" height="355" key="GridCell.Tab.0.left" timestamp="1584669081152">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="128" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584590837412" />
-    <state width="1493" height="128" key="GridCell.Tab.0.right" timestamp="1584590837412">
+    <state width="1493" height="355" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584669081152" />
+    <state width="1493" height="355" key="GridCell.Tab.0.right" timestamp="1584669081152">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="128" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584590837412" />
+    <state width="1493" height="355" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584669081152" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1584502076435">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

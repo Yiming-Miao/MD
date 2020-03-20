@@ -6,7 +6,7 @@ import java.util.List;
 public class ReadFile {
     SQLiteJDBC db = new SQLiteJDBC(); // Database initialization
 
-    public ReadFile(String filepath) {
+    public ReadFile() {
         db.connect();
     }
 

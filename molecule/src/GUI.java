@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.sql.SQLException;
 
 public class GUI extends Component implements ActionListener {
     JLabel title;
@@ -12,9 +13,6 @@ public class GUI extends Component implements ActionListener {
     JButton search_button;
     JTextField search_field;
 
-    public static void main(String[] args) {
-        new GUI();
-    }
     public GUI()
     {
         JFrame guiFrame = new JFrame();
@@ -67,6 +65,12 @@ public class GUI extends Component implements ActionListener {
                 File f = fc.getSelectedFile();
                 // String filepath = f.getPath();
                 add_field.setText(f.getName());
+                ReadFile rf = new ReadFile();
+                try {
+                    rf.singleRead(f.getPath());
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
         else if (e.getSource() == search_button) {
