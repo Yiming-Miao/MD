@@ -1,4 +1,10 @@
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultEdge;
+
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class SQLiteJDBC {
     Connection c = null;
@@ -55,12 +61,13 @@ public class SQLiteJDBC {
         stmt = c.createStatement();
         String sql = "INSERT INTO compound (CID, CNAME, ENUMBER) " +
                 "VALUES (NULL,'" + cname.replace("'", "''") + "', " + enumber + ");";
-        System.out.println(sql);
+//        System.out.println(sql);
         stmt.executeUpdate(sql);
         int cid = 0;
-        ResultSet rs = stmt.executeQuery("SELECT * FROM compound WHERE CNAME='" + cname.replace("'", "''") + "';");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM compound WHERE CNAME='" +  cname.replace("'", "''") + "';");
         while (rs.next()) {
             cid = rs.getInt("CID");
+//            System.out.println(cid);
             break;
         }
         return cid;
@@ -76,6 +83,7 @@ public class SQLiteJDBC {
         }
         String sql = "INSERT INTO compoundElement (LID, EID, CID) " +
                 "VALUES (" + lid + ", " + eid + ", " + cid + ");";
+//        System.out.println(sql);
         stmt.executeUpdate(sql);
     }
 
@@ -83,6 +91,54 @@ public class SQLiteJDBC {
         stmt = c.createStatement();
         String sql = "INSERT INTO structure (LID1, LID2, CID) " +
                 "VALUES (" + lid1 + ", " + lid2 + ", " + cid + ");";
+//        System.out.println(sql);
         stmt.executeUpdate(sql);
+    }
+
+    public boolean findMolecule(String FileName) throws SQLException, IOException {
+        ReadFile rf = new ReadFile();
+        stmt = c.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM compound'" + "';");
+        Graph<String, DefaultEdge> input = rf.toGraph(rf.toText(FileName));
+        while (rs.next()) {
+            ArrayList<String> existedMolecule = toText(rs.getInt("CID"));
+            Graph<String, DefaultEdge> molecule = rf.toGraph(existedMolecule);
+
+            if (molecule.vertexSet().size() != input.vertexSet().size()) {
+                continue;
+            }
+
+            if (molecule.edgeSet().size() != input.edgeSet().size()) {
+                continue;
+            }
+
+            GraphIso pair = new GraphIso(input, molecule);
+
+            if (pair.checkSGI()) {
+                System.out.println("Found " + rs.getString("CNAME"));
+                return true;
+            }
+        }
+
+        System.out.println("Molecule not found.");
+        return false;
+    }
+
+    public ArrayList<String> toText(int cid) throws SQLException {
+        ArrayList<String> text = new ArrayList<>();
+        stmt = c.createStatement();
+        Statement newState = c.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM compound WHERE CID='" + cid + "';");
+        text.add(rs.getString("CNAME"));
+        text.add(rs.getString("ENUMBER"));
+        rs = stmt.executeQuery("SELECT * FROM compoundElement WHERE CID='" + cid + "';");
+        while (rs.next()) {
+            text.add(newState.executeQuery("SELECT * FROM periodicTable WHERE EID='" + rs.getInt("EID") + "';").getString("ENAME").replace("\"", ""));
+        }
+        rs = stmt.executeQuery("SELECT * FROM structure WHERE CID='" + cid + "';");
+        while (rs.next()) {
+            text.add(rs.getString("LID1") + " " + rs.getString("LID2"));
+        }
+        return text;
     }
 }
